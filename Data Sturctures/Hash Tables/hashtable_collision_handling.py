@@ -11,11 +11,23 @@ class HashTable:
     
     def __setitem__(self , key , value):
         h = self.get_hash(key)
-        self.arr[h] = value
+        found = False
+        for ind, element in enumerate(self.arr[h]):
+            if len(element) == 2 and element[0] == key:
+                self.arr[h][ind] = (key,value)
+                found = True
+        if not found:
+            self.arr[h].append((key,value))
+            
+
+        
 
     def __getitem__(self , key):
         h = self.get_hash(key)
-        return self.arr[h]
+        for kv in self.arr[h]:
+            if kv[0] == key:
+                print(kv[1])
+                return kv[1]
 
 
 
@@ -23,6 +35,8 @@ class HashTable:
 
 
 t = HashTable()
+t["march 6"] = 22
 t["march 17"] = 120
 print(t.arr)
-print(t["march 17"])
+t["march 12"]
+print(t.get_hash('akhil'))
