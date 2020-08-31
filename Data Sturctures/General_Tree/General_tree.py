@@ -12,15 +12,15 @@ class TreeNode:
             p = p.parent
 
         return level
-
+        
     def print_tree(self):
-        spaces = ' ' * self.get_level() * 3
-        prefix = spaces + "|__" if self.parent else ""
+        spaces = " " * self.get_level() * 4
+        prefix = spaces + '|__' if self.parent else ""
         print(prefix + self.data)
         if self.children:
             for child in self.children:
                 child.print_tree()
-
+        
     def add_child(self, child):
         child.parent = self
         self.children.append(child)
@@ -50,4 +50,4 @@ def build_product_tree():
 
 if __name__ == '__main__':
     root = build_product_tree()
-    print(root.get_level())
+    root.print_tree()
