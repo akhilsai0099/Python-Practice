@@ -32,23 +32,6 @@ class TreeNode:
             for child in self.children:
                 child.print_tree(property_name)
                 
-    def to_txt(self , property_name):
-        if property_name == "both":
-            value = self.name + f" ({self.designation})"
-        elif property_name == "name":
-            value = self.name
-        else:
-            value = self.designation
-
-
-        prefix =   " " * self.get_level() * 4 + "|___" if self.parent else ""
-
-        print(prefix + value) 
-        if self.children:
-            for child in self.children:
-                child.print_tree(property_name)
-
-
 
 def build_management_tree():
     infra_head = TreeNode("Vishwa" , "Infrastructual head")
@@ -71,6 +54,7 @@ def build_management_tree():
 
 if __name__ == '__main__':
     root_node = build_management_tree()
+
     root_node.print_tree("name") # prints only name hierarchy
     print('')
     print()
@@ -80,3 +64,5 @@ if __name__ == '__main__':
     print()
     print()
     root_node.print_tree("both") # prints both (name and designation) hierarchy
+
+    
